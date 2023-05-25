@@ -1,0 +1,8 @@
+defaults:
+  - env: test
+  - _self_
+
+params:
+  num_of_batches: 10
+  max_sleep_timer: 60
+  
