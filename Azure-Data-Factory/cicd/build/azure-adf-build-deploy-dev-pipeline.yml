@@ -33,9 +33,17 @@ stages:
       
       # Installs Node and the npm packages saved in your package.json file in the build
       - task: NodeTool@0
-        displayName: 'Install Node.js'
         inputs:
-          versionSpec: '10.x'
+          versionSpec: '18.x'
+        displayName: 'Install Node.js'
+      - script: |
+          ls -al
+          pwd
+      
+      #- task: NodeTool@0
+      #  displayName: 'Install Node.js'
+      #  inputs:
+      #    versionSpec: '18.x'
       
       - task: Npm@1
         displayName: 'Install npm package'
