@@ -32,16 +32,16 @@ parameters:
 variables:
 
   - group: Adf-config
-  - ${{ if eq(variables['build.SourceBranchName'], 'develop') }}:
-      - group: adf-dev
-  - ${{ if eq(variables['build.SourceBranchName'], 'main') }}:
-      - group: adf-pre-prod
-  - name: adf_code_path
-    value: "$(Build.SourcesDirectory)/data_ops/adf"
-  - name: WorkspaceArmTemplateDirectory
-    value: $(Pipeline.Workspace)/$(CommonPublishArmTemplateName)
-  - name: adf_package_file_path
-    value: "$(Build.SourcesDirectory)/build/"
+  #- ${{ if eq(variables['build.SourceBranchName'], 'develop') }}:
+  #    - group: adf-dev
+  #- ${{ if eq(variables['build.SourceBranchName'], 'main') }}:
+  #    - group: adf-pre-prod
+  #- name: adf_code_path
+  #  value: "$(Build.SourcesDirectory)/data_ops/adf"
+  #- name: WorkspaceArmTemplateDirectory
+  #  value: $(Pipeline.Workspace)/$(CommonPublishArmTemplateName)
+  #- name: adf_package_file_path
+  #  value: "$(Build.SourcesDirectory)/build/"
   - name: BuildAdfResourceId
     value: /subscriptions/$(DevSubscriptionId)/resourceGroups/$(DevAdfRgName)/providers/Microsoft.DataFactory/factories/$(DevAdfName)
   - name: DevAdfName
