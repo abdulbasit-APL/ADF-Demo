@@ -31,6 +31,7 @@ parameters:
 
 variables:
 
+  - group: Adf-config
   - ${{ if eq(variables['build.SourceBranchName'], 'develop') }}:
       - group: adf-dev
   - ${{ if eq(variables['build.SourceBranchName'], 'main') }}:
@@ -41,6 +42,14 @@ variables:
     value: $(Pipeline.Workspace)/$(CommonPublishArmTemplateName)
   - name: adf_package_file_path
     value: "$(Build.SourcesDirectory)/build/"
+  - name: BuildAdfResourceId
+    value: /subscriptions/$(DevSubscriptionId)/resourceGroups/$(DevAdfRgName)/providers/Microsoft.DataFactory/factories/$(DevAdfName)
+  - name: DevAdfName
+    value: $(Pipeline.Workspace)/Azure-Data-Factory/cicd    
+  - name: adf_package_file_path
+    value: "$(Build.SourcesDirectory)/Azure-Data-Factory/cicd/build/"
+  - name: WorkspaceArmTemplateDirectory
+    value: $(Pipeline.Workspace)/$(CommonPublishArmTemplateName)  
 
 
 stages:  
