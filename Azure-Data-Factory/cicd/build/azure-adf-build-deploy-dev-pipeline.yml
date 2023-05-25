@@ -29,7 +29,7 @@ stages:
       - checkout: self
         displayName: 'Checkout ADF repo'
         clean: true
-        path: $(DevAdfName)
+        #path: $(DevAdfName)
       
       # Installs Node and the npm packages saved in your package.json file in the build
       - task: NodeTool@0
