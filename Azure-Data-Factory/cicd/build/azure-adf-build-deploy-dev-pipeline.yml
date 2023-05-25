@@ -13,7 +13,10 @@ variables:
 
     - name: BuildAdfResourceId
       value: /subscriptions/$(DevSubscriptionId)/resourceGroups/$(DevAdfRgName)/providers/Microsoft.DataFactory/factories/$(DevAdfName)
-      
+    - name: DevAdfName
+      value: $(Pipeline.Workspace)/Azure-Data-Factory/cicd    
+    - name: adf_package_file_path
+      value: "$(Build.SourcesDirectory)/Azure-Data-Factory/cicd/build/"
     - name: WorkspaceArmTemplateDirectory
       value: $(Pipeline.Workspace)/$(CommonPublishArmTemplateName)
 
@@ -49,7 +52,7 @@ stages:
         displayName: 'Install npm package'
         inputs:
           command: 'install'
-          workingDir: '$(Build.Repository.LocalPath)/build/'
+          workingDir: '$(adf_package_file_path)'
           verbose: true
 
       # ADF - Validates all on adf-code.
@@ -57,7 +60,7 @@ stages:
         displayName: 'Validate Source code'
         inputs:
           command: 'custom'
-          workingDir: '$(Build.Repository.LocalPath)/build/'
+          workingDir: '$(Build.Repository.LocalPath)/Azure-Data-Factory/cicd/build/'
           customCommand: 'run build validate $(Build.Repository.LocalPath)/adf-code $(BuildAdfResourceId)'
       
       # ADF - Generate ARM template
