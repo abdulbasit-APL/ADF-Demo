@@ -38,8 +38,8 @@ steps:
         displayName: 'Generate ARM template'
         inputs:
           command: 'custom'
-          workingDir: '$(Build.Repository.LocalPath)/Azure-Data-Factory/data-pipeline/'
-          customCommand: 'run build export $(Build.Repository.LocalPath)/adf-code $(BuildAdfResourceId) "$(CommonPublishArmTemplateName)"'
+          workingDir: '$(Build.Repository.LocalPath)/Azure-Data-Factory/cicd/build/'
+          customCommand: 'run build export $(Build.Repository.LocalPath)/Azure-Data-Factory/data-pipeline/adf-code $(BuildAdfResourceId) "$(CommonPublishArmTemplateName)"'
 
       # Publish the artifact
       - task: PublishPipelineArtifact@1
